@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "target-audience-generic-component-client-side-solution",
+    "id": "7647d9a9-6cf7-4d44-b43b-02e3c3fb4d8f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/target-audience-generic-component.sppkg"
+  }
+}
