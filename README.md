@@ -1,6 +1,7 @@
 ## target-audience-generic-component
 
-This is where you include your WebPart documentation.
+Sample webpart which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic webparts.
+Targets SharePoint Groups only within the site.
 
 ### Building the code
 

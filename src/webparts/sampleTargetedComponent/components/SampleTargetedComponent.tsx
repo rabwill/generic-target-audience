@@ -21,8 +21,7 @@ export default class SampleTargetedComponent extends GenTargetAudienceComponent<
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={styles.column}>
-            <span className={styles.title}>Sample webpart</span>
-           
+            <span className={styles.title}>Sample webpart</span>           
             <p className={styles.subTitle}>{this.state.description}</p>
             <a href="https://aka.ms/spfx" className={styles.button}>
               <span className={styles.label}>Learn more</span>
