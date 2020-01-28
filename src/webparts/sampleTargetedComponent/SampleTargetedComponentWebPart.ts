@@ -24,8 +24,7 @@ export default class SampleTargetedComponentWebPart extends BaseClientSideWebPar
     const element: React.ReactElement<ISampleTargetedComponentProps> = React.createElement(
       SampleTargetedComponent,
       {
-        webAbsoluteUrl: this.context.pageContext.site.absoluteUrl,
-        userId: this.context.pageContext.legacyPageContext[`userId`],
+        pageContext: this.context.pageContext,
         groupIds: this.properties.groups,
         description: this.properties.description
       }

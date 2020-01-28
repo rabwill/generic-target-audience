@@ -13,9 +13,7 @@ export default class SampleTargetedComponent extends GenTargetAudienceComponent<
       description:this.props.description
     };
   }
-  public componentDidMount():void{
-    this.setState({description:this.props.description});
-  }
+ 
   public renderWebpart(): JSX.Element {
     return (<div className={styles.sampleTargetedComponent}>
       <div className={styles.container}>

@@ -1,11 +1,11 @@
 import * as React from "react";
 import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 import spservices from "../service/spservices";
+import { PageContext } from "@microsoft/sp-page-context";
 
 
 export interface IGenTargetAudienceComponentProps {
-    webAbsoluteUrl: string;
-    userId: string;
+    pageContext:PageContext;
     groupIds: IPropertyFieldGroupOrPerson[];
 }
 
@@ -24,19 +24,22 @@ export abstract class GenTargetAudienceComponent<TProps extends IGenTargetAudien
 
     }
    
-
-    public abstract renderWebpart(): React.ReactElement<IGenTargetAudienceComponentProps>;
-
-    public render(): React.ReactElement<IGenTargetAudienceComponentProps> {
+    public componentDidMount():void{
         const self = this;
         let proms = [];
         const _sv = new spservices();
         self.props.groupIds.map((item) => {
-            proms.push(_sv.isMember(item.fullName, self.props.userId, self.props.webAbsoluteUrl));
+            proms.push(_sv.isMember(item.fullName, self.props.pageContext.legacyPageContext[`userId`], self.props.pageContext.site.absoluteUrl));
         });
         Promise.race(proms).then(val => {
             this.setState({ counter: 1 }); //atleast one promise resolved
         });
+        
+    }
+
+    public abstract renderWebpart(): React.ReactElement<IGenTargetAudienceComponentProps>;
+
+    public render(): React.ReactElement<IGenTargetAudienceComponentProps> {
         try {
             //render only if atleast one promise if resolved
             return this.state.counter > 0 ? this.renderWebpart() : null;
