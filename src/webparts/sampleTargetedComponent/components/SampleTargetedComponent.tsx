@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './SampleTargetedComponent.module.scss';
 import { ISampleTargetedComponentProps } from './ISampleTargetedComponentProps';
 import GenTargetAudienceComponent, { IGenTargetAudienceComponentState } from '../../../common/GenTargetAudienceComponent';
-import spservices from '../../../service/spservices';
 export interface ISampleTargetedComponentState extends IGenTargetAudienceComponentState {
   description?: string;
 }
@@ -11,11 +10,17 @@ export default class SampleTargetedComponent extends GenTargetAudienceComponent<
     super(props);
     this.state = {
       description:this.props.description
-    };
+    };  
+  }
+
+  public componentDidMount():void{
+    //needed to make the target audience work
+    this.checkUserCanViewWebpart();   
   }
  
   public renderWebpart(): JSX.Element {
-    return (<div className={styles.sampleTargetedComponent}>
+    return (<div>{this.state.canView?
+    <div className={styles.sampleTargetedComponent}>
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={styles.column}>
@@ -27,7 +32,8 @@ export default class SampleTargetedComponent extends GenTargetAudienceComponent<
           </div>
         </div>
       </div>
-    </div> 
+    </div> :''}
+    </div>
     );
   }
 
