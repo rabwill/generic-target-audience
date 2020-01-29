@@ -1,5 +1,5 @@
 
-import { IGenTargetAudienceComponentProps } from '../../../common/GenTargetAudienceComponent';
-export interface ISampleTargetedComponentProps extends IGenTargetAudienceComponentProps {
+import { ITargetAudienceProps } from '../../../common/TargetAudience';
+export interface ISampleTargetedComponentProps extends ITargetAudienceProps {
   description: string;
 }
