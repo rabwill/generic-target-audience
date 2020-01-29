@@ -5,18 +5,15 @@ import { PageContext } from "@microsoft/sp-page-context";
 export interface ITargetAudienceProps {
     pageContext:PageContext;
     groupIds: IPropertyFieldGroupOrPerson[];
-    children?:JSX.Element;
 }
 export interface ITargetAudienceState {
-    children:JSX.Element;
     canView?: boolean;
 }
 export default class TargetAudience extends React.Component<ITargetAudienceProps, ITargetAudienceState>{
     constructor(props: ITargetAudienceProps) {
         super(props);
         this.state = {
-            canView: false,
-            children: this.props.children
+            canView: false
         } as ITargetAudienceState;
 
     }
@@ -25,7 +22,7 @@ export default class TargetAudience extends React.Component<ITargetAudienceProps
         this.checkUserCanViewWebpart();
     }
     public render(): JSX.Element {
-        return (<div>{this.state.canView ? this.state.children : ``}</div>);
+        return (<div>{this.state.canView ? this.props.children : ``}</div>);
     }
     public checkUserCanViewWebpart(): void {
         const self = this;
