@@ -7,10 +7,7 @@ import TargetAudience, {
 export interface ISampleTargetedComponentState extends ITargetAudienceState {
   description?: string;
 }
-export default class SampleTargetedComponent extends React.Component<
-  ISampleTargetedComponentProps,
-  ISampleTargetedComponentState
-> {
+export default class SampleTargetedComponent extends React.Component<ISampleTargetedComponentProps,ISampleTargetedComponentState> {
   constructor(props: ISampleTargetedComponentProps) {
     super(props);
     this.state = {
@@ -20,26 +17,20 @@ export default class SampleTargetedComponent extends React.Component<
   }
 
   public render(): JSX.Element {
-    return (
-      <TargetAudience
-        pageContext={this.props.pageContext}
-        groupIds={this.props.groupIds}
-        children={
-          <div className={styles.sampleTargetedComponent}>
-            <div className={styles.container}>
-              <div className={styles.row}>
-                <div className={styles.column}>
-                  <span className={styles.title}>Sample webpart</span>
-                  <p className={styles.subTitle}>{this.state.description}</p>
-                  <a href="https://aka.ms/spfx" className={styles.button}>
-                    <span className={styles.label}>Learn more</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+    const App: JSX.Element = <div className={styles.sampleTargetedComponent}>
+      <div className={styles.container}>
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <span className={styles.title}>Sample webpart</span>
+            <p className={styles.subTitle}>{this.state.description}</p>
+            <a href="https://aka.ms/spfx" className={styles.button}>
+              <span className={styles.label}>Learn more</span>
+            </a>
           </div>
-        }
-      ></TargetAudience>
+        </div>
+      </div>
+    </div>;
+    return (<TargetAudience pageContext={this.props.pageContext} groupIds={this.props.groupIds} children={App}></TargetAudience>
     );
   }
 }
