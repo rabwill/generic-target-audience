@@ -25,7 +25,7 @@ export default class TargetAudience extends React.Component<ITargetAudienceProps
         this.checkUserCanViewWebpart();
     }
     public render(): JSX.Element {
-        return (<div>{this.state.canView ? this.state.children : `Can't touch this!`}</div>);
+        return (<div>{this.state.canView ? this.state.children : ``}</div>);
     }
     public checkUserCanViewWebpart(): void {
         const self = this;
