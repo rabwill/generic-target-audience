@@ -18,7 +18,7 @@ export default class SampleTargetedComponent extends React.Component<ISampleTarg
   public render(): JSX.Element {
     return (
     <TargetAudience pageContext={this.props.pageContext} groupIds={this.props.groupIds}>
-    <div className={styles.sampleTargetedComponent}>
+     <div className={styles.sampleTargetedComponent}>
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.column}>

@@ -20,7 +20,7 @@ export interface ISampleTargetedComponentWebPartProps {
 export default class SampleTargetedComponentWebPart extends BaseClientSideWebPart<ISampleTargetedComponentWebPartProps> {
 
   public render(): void {
-    if(this.properties.groups){
+   
     const element: React.ReactElement<ISampleTargetedComponentProps> = React.createElement(
       SampleTargetedComponent,
       {
@@ -30,7 +30,7 @@ export default class SampleTargetedComponentWebPart extends BaseClientSideWebPar
       }
     );
     ReactDom.render(element, this.domElement);
-    }
+    
   }
 
   protected onDispose(): void {
