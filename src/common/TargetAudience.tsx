@@ -28,11 +28,19 @@ export default class TargetAudience extends React.Component<ITargetAudienceProps
     public checkUserCanViewWebpart(): void {
         const self = this;
         let proms = [];
+        const errors = [];
         const _sv = new spservices();
         self.props.groupIds.map((item) => {
             proms.push(_sv.isMember(item.fullName, self.props.pageContext.legacyPageContext[`userId`], self.props.pageContext.site.absoluteUrl));
         });
-        Promise.race(proms).then(val => {
+        Promise.race(
+          proms.map(p => {
+            return p.catch(err => {
+              errors.push(err);
+              if (errors.length >= proms.length) throw errors;
+              return Promise.race();
+            });
+          })).then(val => {
             this.setState({ canView: true }); //atleast one promise resolved
         });
     }
