@@ -38,7 +38,7 @@ export default class TargetAudience extends React.Component<ITargetAudienceProps
             return p.catch(err => {
               errors.push(err);
               if (errors.length >= proms.length) throw errors;
-              return Promise.race();
+              return Promise.race(null);
             });
           })).then(val => {
             this.setState({ canView: true }); //atleast one promise resolved
