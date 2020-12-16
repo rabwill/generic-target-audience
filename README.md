@@ -3,6 +3,10 @@
 Sample webpart which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic webparts.
 Targets SharePoint Groups only within the site.
 
+![audience.gif](./assets/audience.gif)
+
+
+
 ### Building the code
 
 ```bash
